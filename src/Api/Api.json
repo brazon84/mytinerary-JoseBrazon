@@ -1,0 +1,89 @@
+{
+    "cities": [
+        {
+            "id": 1,
+            "firstName": "England",
+            "url": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "city": "London",
+            "description": "London, the capital of England and the United Kingdom, is a 21st century city with a history dating back to Roman times. At its center stand the imposing Houses of Parliament, the iconic clock tower (Big Ben) and Westminster Abbey, the site of British monarchical coronations. On the other side of the River Thames, the London Eye observation wheel offers panoramic views of the South Bank cultural complex and the entire city."
+        },
+        {
+            "id": 2,
+            "firstName": "Chinese",
+            "url": "https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Shanghai Shi",
+            "description": "Shanghai, on China's central coast, is the country's largest city and a global financial hub. Its center is the Bund, a famous waterfront promenade with colonial-era buildings. Across the Huangpu River rises the futuristic skyline of the Pudong district, with the 632-meter-high Shanghai Tower and the Oriental Pearl TV Tower, with its distinctive pink spheres. The sprawling Yu Garden has traditional pavilions, towers and ponds."
+        },
+        {
+            "id": 3,
+            "firstName": "United Arab Emirates",            
+            "url": "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Dubai",
+            "description": "Dubai is an emirate city in the United Arab Emirates known for its luxurious commerce, ultra-modern architecture and lively nightlife. Burj Khalifa, an 830 m high tower, dominates the skyscraper-filled landscape. At its foot is the Dubai Fountain, with choreographed jets and lights choreographed to music. On the artificial islands just off the coast are Atlantis, the Palm, a resort with water and marine animal parks."
+        },
+        {
+            "id": 4,
+            "firstName": "United States",
+            "url": "https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Mill Valley",
+            "description": "Mill Valley is located on the western and northern shores of Richardson Bay, and the eastern slopes of Mount Tamalpais. Beyond the flat coastal area and marshlands, it occupies narrow wooded canyons, mostly of second-growth redwoods, on the southeastern slopes of Mount Tamalpais. The Mill Valley 94941 ZIP Code also includes the following adjacent unincorporated communities: Almonte, Alto, Homestead Valley, Tamalpais Valley, and Strawberry. The Muir Woods National Monument is also located just outside the city limits."
+        },
+        {
+            "id": 5,
+            "firstName": "CABA",
+            "url": "https://images.pexels.com/photos/545901/pexels-photo-545901.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Argentina",
+            "description": "Buenos Aires is the great cosmopolitan capital of Argentina. Its center is the Plaza de Mayo, surrounded by imposing 19th-century buildings, including the Casa Rosada, the iconic presidential palace with several balconies. Other major attractions include the Teatro Colón, a luxurious 1908 opera house with about 2,500 seats, and the modern MALBA museum, which exhibits Latin American art."
+        },
+        {
+            "id": 6,
+            "firstName": "São Paulo",
+            "url": "https://images.pexels.com/photos/311617/pexels-photo-311617.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Brasil",
+            "description": "São Paulo or Sao Paulo is one of the twenty-six states that, together with the federal district, make up the Federative Republic of Brazil. Its capital, São Paulo, is the largest city in Brazil and Latin America and the fourth largest in the world. It is located in the southeastern region of the country."
+        },
+        {
+            "id": 7,
+            "firstName": "Guatape, Antioquia",
+            "url": "https://images.pexels.com/photos/17043998/pexels-photo-17043998/free-photo-of-paisaje-verano-bosque-rio.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Colombia",
+            "description": "Guatapé is a tourist municipality in the Andes in northwestern Colombia and east of Medellín. It is famous for its houses decorated with colorful bas-reliefs. It is located near the Peñol-Guatapé artificial reservoir, a popular water sports center. La Piedra del Peñol is a giant granite rock located southwest of the town with a long staircase to its top, where you can enjoy a panoramic view of the area. The El Marial stone is a giant protruding rock nearby."
+        },
+        {
+            "id": 8,
+            "firstName": "Cusco",
+            "url": "https://images.pexels.com/photos/3706960/pexels-photo-3706960.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Peru",
+            "description": "Aguas Calientes is a town in the Urubamba River valley in southeastern Peru. It is known for its hot springs and access to the nearby Inca ruins of Machu Picchu. The town center is full of restaurants and stores, with the Mercado Artesanal at its center. To the northwest along the river are the Mandor Gardens with orchids and birds. The nearby Butterfly House is a local conservation project."
+        },
+        {
+            "id": 9,
+            "firstName": "Santiago",
+            "url": "https://images.pexels.com/photos/2475407/pexels-photo-2475407.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Chile",
+            "description": "Santiago, the capital and largest city of Chile, is located in a valley surrounded by the snow-capped peaks of the Andes and the Chilean Coastal Range. The Plaza de Armas, the great nucleus of the old colonial center of the city, has 2 neoclassical monuments: the 1808 Palacio de la Real Audiencia, where the National Historical Museum is located, and the 18th century Metropolitan Cathedral. La Chascona is the house transformed into a museum of the poet Pablo Neruda."
+        },
+        {
+            "id": 10,
+            "firstName": "Quito",
+            "url": "https://images.pexels.com/photos/5293883/pexels-photo-5293883.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Ecuador",
+            "description": "Quito, the capital of Ecuador, is located high in the foothills of the Andes at 2,850 m (8,850 ft). It was built on the foundations of an ancient Inca city and is famous for its well-preserved colonial center, with several 16th- and 17th-century churches and other structures that blend European, Moorish and indigenous styles. These include the cathedral, in the Plaza Grande, and the highly decorated Jesuit church of the Society of Jesus."
+            
+        },
+        {
+            "id": 11,
+            "firstName": "Merida",
+            "url": "https://images.pexels.com/photos/13396630/pexels-photo-13396630.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Venezuela",
+            "description": "Mérida is a city in the Andes Mountains in northwestern Venezuela. It is known for its Spanish colonial architecture, parks and plazas, and as a center for outdoor activities in the nearby Sierra Nevada and Sierra La Culata national parks. International visitors and the many students of the prestigious Universidad de Los Andes contribute to the lively nightlife and cultural atmosphere."
+        },
+        {
+            "id": 12,
+            "firstName": "City Beach",
+            "url": "https://images.pexels.com/photos/45917/pexels-photo-45917.jpeg?auto=compress&cs=tinysrgb&w=600",
+             "city": "Panama",
+            "description": "Panama City Beach is a coastal city and vacation destination in northwest Florida. It is known for its miles of white sandy beaches fronting the clear waters of the Gulf of Mexico. St. Andrews State Park, one of 2 protected nature preserves, is surrounded by the Gulf and has hiking trails and fishing piers. The Park Pier is the main shopping center and a major event facility."
+        }
+    ]
+}
