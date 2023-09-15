@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
-
 import { Link } from 'react-router-dom';
 import jwtDecode from "jwt-decode";
-
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const [data, setData] = useState({
@@ -11,10 +11,8 @@ const SignUp = () => {
         lastName: "",
         email: "",
         password: "",
-        Photo: "",
-        terms: false,
+        country: ""
     });
-    const [registrationStatus, setRegistrationStatus] = useState(null);
 
     const handleChangeData = (e) => {
         const { name, value } = e.target;
@@ -24,54 +22,44 @@ const SignUp = () => {
         }));
     };
 
+  const googleauth = async (data)=>{
+    try{
+        await axios.post("http://localhost:8000/users", data);
+
+        console.log("Datos de registro:", response.data);
+    }
+  catch (error) {
+    console.error("Error al registrar:", error);
+  }};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const userData = { ...data }
-        if (data.terms) {
-            const requestData = {
-                name: data.firstName + " " + data.lastName,
-                email: data.email,
-                password: data.password,
 
-            };
+        try {
+            await axios.post("http://localhost:8000/users", data);
+            console.log("Datos de registro:", response.data);
+            Swal.fire({
+                icon: "success",
+                title: "Register in!",
+                text: `Welcome, ${data.firstName}! You have successfully registered.`,
+            });
 
+        } catch (error) {
+            console.error("Error al registrar:", error);
 
-            try {
-                const response = await fetch.post("http://localhost:8000/users", { ...requestData });
-                console.log("Datos de registro:", response.data);
-                Swal.fire({
-                    icon: "success",
-                    title: "Register in!",
-                    text: `Welcome, ${requestData.name}! You have successfully registered.`,
-                });
-
-            } catch (error) {
-                console.error("Error al registrar:", error);
-                Swal.fire({
-                    icon: "error",
-                    title: "Fail Register!",
-                    text: ` ${error.response.data.message}!`,
-                });
-
-                setRegistrationStatus("error");
-            }
+            Swal.fire({
+                icon: "error",
+                title: "Fail Register!",
+                text: ` ${error.response.data.message}!`,
+            });
         }
     };
 
-    const renderAlert = () => {
-        if (registrationStatus === "success") {
-            return <div className="alert alert-success">Usuario registrado con éxito.</div>;
-        } else if (registrationStatus === "error") {
-            return <div className="alert alert-danger">Error al registrar el usuario.</div>;
-        }
-    };
 
 
     return (
         <form
             className="form d-flex justify-content-center align-items-center flex-column"
-            
             onSubmit={handleSubmit}
         >
             <div className=' d-flex justify-content-center flex-column align-items-center text-center'>
@@ -82,16 +70,26 @@ const SignUp = () => {
                         <GoogleLogin
                             onSuccess={(CredentialResponse) => {
                                 const infoUser = jwtDecode(CredentialResponse.credential);
+                                alert(infoUser.family_name)
+
                                 setData({
                                     firstName: infoUser.given_name,
-                                    lastName: infoUser.family_name,
+                                    lastName: infoUser.family_name || "vacio",
                                     email: infoUser.email,
                                     password: "jose1234",
+                                    country: "canada"
                                 });
                                 Swal.fire({
                                     icon: "success",
                                     title: "Register in!",
                                 });
+                                googleauth({
+                                    firstName: infoUser.given_name,
+                                    lastName: infoUser.family_name || " ",
+                                    email: infoUser.email,
+                                    password: "jose1234",
+                                    country: "canada"
+                                })
                             }}
                             onError={() => {
                                 console.log("Login Failed");
@@ -99,6 +97,7 @@ const SignUp = () => {
                                     title: "Something went wrong!",
                                     icon: "error",
                                 });
+
                             }}
                         />
                     </GoogleOAuthProvider>
@@ -142,14 +141,19 @@ const SignUp = () => {
                             />
                         </div>
                         <label htmlFor="country">Country</label>
-                        <select name="country" id="country" value={data.country} onChange={handleChangeData}>  // Cambiado de formData.country a data.country
+                        <select
+                            type="text"
+                            name="country"
+                            value={data.country}
+                            onChange={handleChangeData}
+                        >
                             <option value="chile">Chile</option>
                             <option value="ecuador">Ecuador</option>
                             <option value="argentina">Argentina</option>
                             <option value="venezuela">Venezuela</option>
                         </select>
                         <div>
-                        <button type="submit" className=" mt-5 btn btn-primary">Sign Up</button>
+                            <button type="submit" className=" mt-5 btn btn-primary">Sign Up</button>
                         </div>
                     </div>
                 </div>
