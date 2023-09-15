@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import jwtDecode from "jwt-decode";
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
+    const [data, setData] = useState({
+        email: "",
+        password: "", 
+    });
+    const handleChangeData = (e) => {
+        const { name, value } = e.target;
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
 
-    const clientID = "345300445401-ffcd5tcp6mr0jcco4igp1geuu4bhqtqj.apps.googleusercontent.com";
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
+    };
+    const [user, setUser] = useState(null); 
 
-    const onSuccess = (response) => {
-        setUser(response.profileObj);
-        axios.post('http://localhost:8000/users/login')
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error));
-    }
-
-    const onFailure = (response) => {
-        console.log("Something went wrong");
-    }
+    const googleauth = async (data)=>{
+        try{
+            await axios.post("http://localhost:8000/users/login", data);
+    
+            console.log(res.data);
+        }
+      catch (error) {
+        console.error(error);
+      }};
 
     const handleLogout = () => {
         setUser(null);
@@ -27,8 +36,25 @@ const SignIn = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+    
+        // Envía los datos al servidor para autenticar al usuario
+        axios.post('http://localhost:8000/users/login', {
+            email: data.email,
+            password: data.password
+        })
+        .then(response => {
+            setUser(response.data.user);
+        })
+        .catch(error => {
+            console.error('Error en la autenticación:', error);
+            Swal.fire({
+                icon: "error",
+                title: "Error en la autenticación",
+                text: "Credenciales incorrectas. Por favor, intenta de nuevo.",
+            })
+        })
     }
+    
 
     return (
         <div className=''>
@@ -39,29 +65,59 @@ const SignIn = () => {
                 <div className="text-center">
                     {!user && (
                         <div className='btn'>
-                            <GoogleLogin
-                                clientId={clientID}
-                                onSuccess={onSuccess}
-                                onFailure={onFailure}
-                                buttonText="Continue  with Google"
-                            />
+                            <GoogleOAuthProvider clientId="345300445401-ffcd5tcp6mr0jcco4igp1geuu4bhqtqj.apps.googleusercontent.com">
+          <GoogleLogin
+            onSuccess={(CredentialResponse) => {
+              console.log("CredentialResponse");
+              const infoUser = jwtDecode(CredentialResponse.credential);
+              console.log(infoUser);
+              setData({
+                email: infoUser.email,
+                password: "jose1234",
+              });
+
+              googleauth({
+                email: infoUser.email,
+                password: "jose1234",})
+            }}
+            onError={() => {
+              console.log("Login Failed");
+              Swal.fire({
+                title: "Something went wrong!",
+                icon: "error",
+              });
+            }}
+          />
+        </GoogleOAuthProvider>
                         </div>
                     )}
                     {user && (
                         <div className="profile">
-                            <img src={user.imageUrl} alt="Profile" />
                             <h3>{user.name}</h3>
-                            <button onClick={handleLogout}>Logout</button>
+                            <button className="btn btn-primary mt-3" onClick={handleLogout}>Logout</button>
                         </div>
                     )}
                     <form className='d-flex justify-content-center flex-column' onSubmit={handleSubmit} >
                         <div className='d-flex justify-content-center flex-column'>
                             <label htmlFor='email'>Email:</label>
-                            <input className='text-center' type="email" placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input 
+                            className='text-center'
+                            name='email' 
+                            type="email" 
+                            placeholder='email'
+                            onChange={handleChangeData} 
+                            value={data.email} 
+                             />
                         </div>
                         <div className='d-flex justify-content-center flex-column'>
                             <label htmlFor='password'>Password:</label>
-                            <input className='text-center' type="password" placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input 
+                            className='text-center' 
+                            type="password"
+                            name='password' 
+                            placeholder='password' 
+                            onChange={handleChangeData}
+                            value={data.password} />
                         </div>
                        <button type="submit" className="btn btn-primary mt-3">Sign In</button>
                     </form>
