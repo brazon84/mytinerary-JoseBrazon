@@ -22,9 +22,12 @@ const SignIn = () => {
 
     const googleauth = async (data)=>{
         try{
-            await axios.post("http://localhost:8000/users/login", data);
+            await axios.post("http://localhost:8000/users/login", data)
+             .then(response => {
+                setUser(response.data.user);
+            });
     
-            console.log(res.data);
+            console.log(data);
         }
       catch (error) {
         console.error(error);
