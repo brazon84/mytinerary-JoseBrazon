@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const Url= 'http://localhost:8000/cities';
+const Url= 'https://mytineraty-back-brazon84.vercel.app/cities';
 
 function Details() {
     const [cityData, setCityData] = useState({});

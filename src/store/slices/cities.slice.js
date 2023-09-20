@@ -17,7 +17,7 @@ export default citiesSlice.reducer;
 
 export const getAllCitiesThunk = () => {
   return (dispatch) => {
-    const API = 'http://localhost:8000/cities';
+    const API = 'https://mytineraty-back-brazon84.vercel.app/cities';
     axios.get(API)
       .then((res) => {
         dispatch(setCityData(res.data));

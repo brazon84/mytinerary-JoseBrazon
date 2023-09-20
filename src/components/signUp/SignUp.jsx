@@ -24,7 +24,7 @@ const SignUp = () => {
 
   const googleauth = async (data)=>{
     try{
-        await axios.post("http://localhost:8000/users", data);
+        await axios.post("https://mytineraty-back-brazon84.vercel.app/users", data);
 
         console.log("Datos de registro:", response.data);
     }
@@ -36,7 +36,7 @@ const SignUp = () => {
         e.preventDefault();
 
         try {
-            await axios.post("http://localhost:8000/users", data);
+            await axios.post("https://mytineraty-back-brazon84.vercel.app/users", data);
             console.log("Datos de registro:", response.data);
             Swal.fire({
                 icon: "success",

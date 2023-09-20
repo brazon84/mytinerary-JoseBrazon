@@ -22,7 +22,7 @@ const SignIn = () => {
 
     const googleauth = async (data)=>{
         try{
-            await axios.post("http://localhost:8000/users/login", data)
+            await axios.post("https://mytineraty-back-brazon84.vercel.app/users/login", data)
              .then(response => {
                 setUser(response.data.user);
             });
@@ -41,7 +41,7 @@ const SignIn = () => {
         event.preventDefault();
     
         // Envía los datos al servidor para autenticar al usuario
-        axios.post('http://localhost:8000/users/login', {
+        axios.post('https://mytineraty-back-brazon84.vercel.app/users/login', {
             email: data.email,
             password: data.password
         })
